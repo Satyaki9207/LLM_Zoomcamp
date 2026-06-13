@@ -1,0 +1,9 @@
+# Add or remove packages below (one per line).
+jupyterlab
+numpy
+pandas
+matplotlib
+scikit-learn
+scipy
+statsmodels
+google-genai

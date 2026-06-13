@@ -1,0 +1,22 @@
+services:
+  jupyter:
+    image: python:latest
+    container_name: jupyter-lab
+    working_dir: /app
+    ports:
+      - "8888:8888"
+    environment:
+      JUPYTER_TOKEN: jupyter
+      GOOGLE_APPLICATION_CREDENTIALS: /root/.config/gcloud/application_default_credentials.json
+    volumes:
+      - .:/app
+      # For Windows (PowerShell/CMD) host:
+      # - ${APPDATA}/gcloud:/root/.config/gcloud:ro
+      # For WSL/Linux host:
+      - ~/.config/gcloud:/root/.config/gcloud:ro
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        pip install --upgrade pip
+        pip install -r requirements.txt
+        jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root
