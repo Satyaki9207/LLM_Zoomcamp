@@ -7,3 +7,7 @@ scikit-learn
 scipy
 statsmodels
 google-genai
+requests
+minsearch
+python-dotenv
+
